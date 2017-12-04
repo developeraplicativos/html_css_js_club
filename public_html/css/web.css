@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body{
-	background-color: white; 
+	background-color: white;
 	background: radial-gradient(#8B8970 50%, #000000);
 	background-attachment: fixed;
 }
@@ -79,7 +79,7 @@ form{
 	font-family: verdana,sans-serif;
 	font-size: 14px;
 	width: 430px;
-	height: 300px;	
+	height: 300px;
 }
 
 .mapSat{
@@ -88,7 +88,18 @@ form{
 	height: 90px;
 	position: relative;
 }
-
+#maplong{
+	position: absolute;
+	top: 110px;
+	left: 450px;
+	border: 1px solid red;
+	width: 50px;
+	height: 100px
+	text-align: left;
+}
+#maplong img{
+	width: 50px;
+}
 .tex{
 /*	padding: 40px;*/
 	position: absolute;
@@ -141,7 +152,7 @@ select{
 .butt{
 	clear: both;
 	text-indent: 0em;
-	margin: 10px 0px 0px 130px;	
+	margin: 10px 0px 0px 130px;
 	width: 280px;
 }
 
@@ -169,7 +180,7 @@ select{
 	margin: 2px auto 2px auto;;
 	width: 450px;
 	height: 450px;
-}  
+}
 
 
 #galeria{
@@ -193,7 +204,7 @@ select{
 #galeria b{
 	position: absolute;
 	top: 2px;
-	left:	200px; 
+	left:	200px;
 	background: rgba(255,255,0,0.7);
 	padding: 5px;
 	border-radius: 5px;
@@ -317,12 +328,12 @@ select{
 
 
 #textomenu a:hover{
-	color: #ffffff;	
+	color: #ffffff;
 }
 
 section{
 	width: 100%;
-	height: 340px; 
+	height: 340px;
 	text-align: center;
 }
 
@@ -333,9 +344,9 @@ section input{
 #interface{
 	width: 1140px;
 	background-color: white;
-	margin: -20px auto; 
+	margin: -20px auto;
 	box-shadow: 0px 0px 10px black;
-	padding: 10px 10px 80px 10px; 	
+	padding: 10px 10px 80px 10px;
 	border-radius: 0.6em;
 }
 
@@ -345,7 +356,7 @@ section input{
 	font-size: 12px;
 	border: 0px;
 	border-radius: 1em;
-	BACKGROUND: rgba(112,128,144,0.2); 
+	BACKGROUND: rgba(112,128,144,0.2);
 	padding: 20px 20px 120px 20px;
 	font-family: Verdana ,arial ,serif;
 }
@@ -386,7 +397,7 @@ section input{
 }
 
 #cabecalho {
-	height: 150px;	
+	height: 150px;
 }
 
 #backg {
@@ -449,11 +460,11 @@ section input{
 }
 
 
-footer{ 
+footer{
 	border: 1px solid grey;
 	width: 1150px;
 	height: 60px;
-	margin: -10px auto; 
+	margin: -10px auto;
 	background: rgba(169,169,169, 0.8);
 	clear: both;
 	margin: 20px auto 0px auto;

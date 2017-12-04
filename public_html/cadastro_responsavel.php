@@ -1,3 +1,24 @@
+<?php
+	require_once("config.php");
+		if($_SERVER["REQUEST_METHOD"]==="POST"){
+			if(isset($_POST["enviarCadastroUs"])){
+				/*
+				$emp = new controle_responsavel();
+				if(($emp->insert($_POST["cpf"],$_POST["nome"],$_POST["nomeemail"],$_POST["nomecelular"],$_POST["nomesenha"],$_POST["nomecnpj_empresa"],$_POST["nomeid_eventos"])!=0)){//diferente de 0
+					echo '
+						<script>
+							alert("seu cadastro foi realizado com sucesso! ");
+						</script>
+					';
+				}
+				*/
+			}
+
+			if(isset($_POST["Login"])){
+
+			}
+		}
+?>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 
@@ -18,11 +39,11 @@
 	/>
 
 	<meta name="description"
-	content="cadastro no clubvip, aplicativo android integrando html, para empresa / boate, 
+	content="cadastro no clubvip, aplicativo android integrando html, para empresa / boate,
 	fornecendo a ela uma vantagem de mais clientes com baixo investimento"
 	/>
 
-	<meta name="keywords" 
+	<meta name="keywords"
 	content="curtição, cadastro, boate, cliente, lucro, investimento"
 	/>
 
@@ -34,8 +55,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="javascript/jq_menu.js"></script>
 	<script src="javascript/jq_formulario.js"></script>
-	<script src="javascript/Validarcadastro.js"></script>
-	
+	<!--script src="javascript/Validarcadastro.js"></script-->
+
 
 </head>
 <body>
@@ -48,14 +69,14 @@
 		<nav id="textomenu" >
 		<h1> menu principal</h1>
 			<ul >
-		
+
 				<li> <a href="index.html">PRINCIPAL   </a> </li>
 				<li> <a href="saiba.html">SAIBA MAIS  </a> </li>
 				<li> <a href="usuario.html">USUÁRIO    </a> </li>
 				<li> <a href="contato.html">FALE CONOSCO</a> </li>
-				
+
 			</ul>
-		</nav>	
+		</nav>
 	</header>
 
 
@@ -69,16 +90,15 @@
 
 <div class="esquerda">
 
-	<form id="formCadastro" method="post"  action="#" onsubmit="return valida_form(this)">
-		<p class="tituloForm" >Cadastro</p>
-
+	<form id="formCadastro" method="post"  onsubmit="return valida_form(this)" name="usuarioCadastro">
+		<p class="tituloForm" >Cadastro Responsável</p>
 		<label>Nome: </label>				<input type="text" 	name="nome"  for="nomeCadastro"		maxlength="40" id="nomeCadastro" 		placeholder="Nome Completo" /> </br>
-		<label>Telefone:  </label>			<input type="text" 	name="telefone"  	maxlength="11" id="telefoneCadastro" 	placeholder="Telefone pessoal"/> </br>		
+		<label>Telefone:  </label>			<input type="text" 	name="telefone"  	maxlength="11" id="telefoneCadastro" 	placeholder="Telefone pessoal"/> </br>
 		<label>Cpf:  </label> 			<input type="number"  	name="cpf" 			maxlength="11" id = "cpfCadastro"  placeholder="000.000.000-00" /> </br>
-		
+
 		<label>Email:  </label>				<input type="email" name="email" 		maxlength="30" id="emailCadastro" placeholder="Exemplo@hotmail.com"/> </br>
-		<label for="estado">Estado:  </label>		
-			<select>
+		<label for="estado">Estado:  </label>
+			<select name="estado">
 				<optgroup label="Região Norte">
 					<option value="AM">		Amazonas		</option>
 					<option value="RR">		Roraima			</option>
@@ -88,7 +108,7 @@
 					<option value="RO">		Rondônia		</option>
 					<option value="AC">		Acre			</option>
 				</optgroup>
-				
+
 				<optgroup label="Região Nordeste">
 					<option value="MA">		Maranhão		</option>
 					<option value="CE">		Ceará			</option>
@@ -102,27 +122,27 @@
 				</optgroup>
 
 				<optgroup label="Região Centro-Oeste">
-					<option value="MT">		Mato Grosso		</option>	
+					<option value="MT">		Mato Grosso		</option>
 					<option value="MS">		Mato Grosso do Sul	</option>
 					<option value="GO">		Goiás			</option>
 					<option value="DF">		Distrito Federal	</option>
 				</optgroup>
 
 				<optgroup label="Região Sudeste">
-					<option value="SP">São Paulo </option> 
+					<option value="SP">São Paulo </option>
 					<option value="RJ">Rio de Janeiro </option>
 					<option value="ES">Espírito Santo </option>
 					<option value="MG">Minas Gerais </option>
 				</optgroup>
 
 				<optgroup label="Região Sul">
-					<option value="PR">		Paraná			</option>	
+					<option value="PR">		Paraná			</option>
 					<option value="RS">		Rio Grande do Sul	</option>
 					<option value="SC">		Santa Catarina 		</option>
-	
+
 				</optgroup>
 
-	
+
 			</select> </br>
 		<label>Cidade:  </label>			<input type="text" name="cid" id="icid" list="cidades" /> </br>
 			<datalist id="cidades">
@@ -152,17 +172,18 @@
 		<label>Senha:  			</label>		<input type="password" name="senhaCadastro" 	maxlength="8" id="senhaCadastro" onBlur= "avalaiar('senha', this.value , 'senhaCadastro' )" /> </br>
 		<label>Confirme Senha:  </label>		<input type="password" name="confsenhaCadastro" maxlength="8" id="confSenhaCadastro" onBlur= "confirmacaoSenha( this.value )"  /> </br>
 
-		<div id="check"> 
-			<input type="checkbox" name="aceito" id="concordo"/> 
+
+		<div id="check">
+			<input type="checkbox" name="aceito" id="concordo"/>
 			<p id="caixaContrato"> Eu concordo com os termos do ClubVip </p>
 		</div>
 
 		<p class="butt">
-			<input  class="botaoCell" type="submit" class="button" id="botaoConfirm" value="Enviar" onclick="avalaiar(texto, nome )">
-			<input  class="botaoCell" type="submit" class="button" id="botaoLimpar"  value="Limpar"> 
+			<input  class="botaoCell" type="submit" name="enviarCadastroUs" class="button" id="botaoConfirm" value="Enviar" onclick="avalaiar(texto, nome )">
+			<input  class="botaoCell" type="submit" class="button" id="botaoLimpar"  value="Limpar">
 		</p>
 
-		
+
 	</form>
 
 </div>
@@ -170,25 +191,25 @@
 <div class="direita" height="300px">
 
 
-	<form id="formCadastro" method="post"  onsubmit="return valida_form(this)">
-		<p class="tituloForm">Login</p>
+	<form id="formCadastro" method="post"  onsubmit="return valida_form(this)" name="usuarioLogin">
+		<p class="tituloForm">Login de Responsável</p>
 		<label>Email:  </label> 	<input type="email" name="email" id="emailLogin"  maxlength="30" onBlur= "avalaiar('email', this.value , 'emailLogin' )" /> </br>
 		<label>Senha:  </label> 	<input type="password" name="senhaLog" id="senhaLogin"  maxlength="8" onBlur= "avalaiar('email', this.value , 'senhaLogin' )" /> </br>
-		</p>	
+		</p>
 		<span><a href="#" onclick="recuperaSenha(true)"> esqueceu a senha ? </a></span>
-		
+
 		<p class="butt">
-			<input class="botaoCell" type="submit" class="button" value="Enviar">
-			<input class="botaoCell" type="submit" class="button" value="Limpar"> 
+			<input class="botaoCell" name="Login" type="submit" class="button" value="Enviar">
+			<input class="botaoCell" type="submit" class="button" value="Limpar">
 		</p>
 
 	</form>
 </div>
 
-<div id="poup">	       
+<div id="poup">
 	<a href="#" id="fechar" onclick="recuperaSenha(false)"> fechar</a>
 	<p>Email:  <input type="email" placeholder="email cadastrado para envio da senha"> </input>  <input id="solicitarSenha" type="button" value="solicitar" ></input> </p>
-	
+
 </div>
 
 <div id="USUARIO">
@@ -205,7 +226,7 @@
 
 </fieldset>
 
-</div> 
+</div>
 
 </br>
 
@@ -223,7 +244,7 @@
 		<area shape="rect" coords="188,0,237,40" href="sun4.html" alt="links" >
 	</map>
 	</span>
-	
+
 
 </footer>
 
